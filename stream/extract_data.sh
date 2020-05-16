@@ -4,7 +4,7 @@
 extract_data () {
     echo "$1,$2," > tmp
     grep "$3" run_$2/*.o* | awk '{ print $1, $2, $3, $4, $5 }' | sed "s/://g" | sed "s/ /,/g" >> tmp
-    awk 'NR%2{printf "%s ",$0;next;}1' tmp >> ../data_$name_$k.csv
+    awk 'NR%2{printf "%s ",$0;next;}1' tmp >> ../data_${name}_$k.csv
 
 }
 
@@ -23,6 +23,7 @@ iterate_dirs () {
             extract_data $i $j Scale:
             extract_data $i $j Add:
             extract_data $i $j Triad:
+            echo "procs $i, run $j"
         done
         rm tmp
         cd ..
