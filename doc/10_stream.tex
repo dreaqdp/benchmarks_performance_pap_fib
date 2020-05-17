@@ -1,0 +1,18 @@
+\section{Stream}
+Aquest benchmark es centra en testejar el bandwidth a memòria.
+Es composa de 4 funcions: \texttt{Copy}, \texttt{Scale}, \texttt{Add} i \texttt{Triad}.
+La funció que fa només operacions a memoria és la de \texttt{copy}, per tant ens serveix per a fer la línia de memòria en un \textit{roofline} amb dades empíriques i no teòriques.
+
+\subsubsection{One-node performance}
+
+\subsubsection{Peak memory bandwidth}
+
+DDR4-2400:
+
+\[2400\ bits/s\ *\ (64\ bits/8\ bits/byte)\ *\ 6\ channels\ =\ 115.20\ MB/s\]
+
+DDR4-2133:
+
+\[2133\ bits/s\ *\ (64\ bits/8\ bits/byte)\ *\ 6\ channels\ =\ 102.38\ MB/s\]
+
+\subsubsection{Numactl}
