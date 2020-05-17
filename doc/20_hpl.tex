@@ -1,18 +1,37 @@
 \section{Linpack}
 \subsection{One-node performance}
+Observant la taula \ref{tab:hpl_one_global_perf}, s'extreu que les configuracions d'NBs i process grid per cada nombre de processos que donen el màxim de GFlops són:
+\begin{itemize}
+    \item \textbf{1 rank: } Màx =  6.43 GFlops  \\ P = 1  ; Q = 1  ; NB = 256
+    \item \textbf{2 ranks:} Màx = 12.22 GFlops  \\ P = 1  ; Q = 2  ; NB = 128
+    \item \textbf{4 ranks:} Màx = 23.00 GFlops  \\ P = 2  ; Q = 2  ; NB = 128
+    \item \textbf{6 ranks:} Màx = 32.87 GFlops  \\ P = 3  ; Q = 2  ; NB = 128
+    \item \textbf{8 ranks:} Màx = 42.58 GFlops  \\P = 4  ; Q = 2  ; NB = 64
 
+\end{itemize}
 % taula resultats, resum, posar completa en annex?
 % millor nb, process grid
-
+\input{21_hpl_one_node_table.tex}
 % plot escalabilitat
 
 
 
 \subsection{Two-node performance}
 
+Observant la taula \ref{tab:hpl_two_global_perf}, s'extreu que les configuracions d'NBs i process grid per cada nombre de processos que donen el màxim de GFlops són:
+\begin{itemize}
+    \item \textbf{2 ranks: } Màx = 12.22 GFlops  \\ P = 1  ; Q = 2  ; NB = 128
+    \item \textbf{4 ranks: } Màx = 23.06 GFlops  \\ P = 2  ; Q = 2  ; NB = 128
+    \item \textbf{8 ranks: } Màx = 42.65 GFlops  \\ P = 4  ; Q = 2  ; NB = 64
+    \item \textbf{12 ranks:} Màx = 60.81 GFlops  \\ P = 4  ; Q = 3  ; NB = 64
+    \item \textbf{16 ranks:} Màx = 78.10 GFlops  \\ P = 4  ; Q = 4  ; NB = 64
+
+        Respecte l'execució del benchmark amb 12 processos, cap execució ha pogut computar els resultats més enllà de la combinació de P = 6, Q = 2 i NB = 64. Segurament es degut al límit de temps dels \textit{jobs}.
+
+\end{itemize}
 % taula resultats, resum, posar completa en annex?
 % millor nb, process grid
-
+\input{22_hpl_two_nodes_table.tex}
 % plot escalabilitat
 
 \subsection{Peak performance}
@@ -23,4 +42,7 @@ La \textit{peak performance} teòrica de cada core del processador Intel Xeon E5
 La \textit{peak performance} teòrica del node, amb 2 processadors Intel Xeon E5-2609 v4 és de:
 
 \[2\ proc\ *\ 8\ cores/proc\ *\ 27.2\ GFlops\_per\_core\ =\ 435.2\ GFlops\]
+
+Comparant la performance obtinguda amb HPL i la teòrica, observem que aquesta primera dista molt de la que hauriem d'aconseguir. Ens centrem en la combinació que millor GFlops ha obtingut, 16 processos en 2 nodes, amb 78.10 GFlops, en comparació amb els 435.2 GFlops teòrics (coincideix amb la performance teòrica del node perquè fa ús de 16 cores). 
+S'està obtenint una performance 5.6 cops inferior.
 
